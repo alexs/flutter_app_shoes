@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_ecommerce_demo/models/product_model.dart';
 import 'package:flutter_ecommerce_demo/pages/detail_page.dart';
 
+import 'cart_page.dart';
+
 class HomePage extends StatefulWidget {
   HomePage({Key key}) : super(key: key);
 
@@ -77,17 +79,27 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
             _cartItems(),
-            CircleAvatar(
-              backgroundColor: Colors.amber[800],
-              child: Container(
-                padding: EdgeInsets.all(7.0),
-                decoration: BoxDecoration(
-                  color: Colors.black,
-                  shape: BoxShape.circle,
-                ),
-                child: Icon(
-                  Icons.arrow_forward,
-                  color: Colors.white,
+            InkWell(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => CartPage(selectedProducts: addItems),
+                  ),
+                );
+              },
+              child: CircleAvatar(
+                backgroundColor: Colors.amber[800],
+                child: Container(
+                  padding: EdgeInsets.all(7.0),
+                  decoration: BoxDecoration(
+                    color: Colors.black,
+                    shape: BoxShape.circle,
+                  ),
+                  child: Icon(
+                    Icons.arrow_forward,
+                    color: Colors.white,
+                  ),
                 ),
               ),
             ),
